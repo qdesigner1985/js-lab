@@ -18,43 +18,68 @@
     </style>
 </head>
 <body>
-<div id="app" class="foo">
+<div id="app">
     <h1 id="main-header">Moja aplikacja</h1>
     <p>To będzie gra. A oto co muszę zrobić:</p>
     <ol>
         <li class="boring">Nauczyć się HTML</li>
         <li class="boring">Nauczyć się CSS</li>
-        <li class="foo">Nauczyć się JS</li>
+        <li>Nauczyć się JS</li>
         <li id="super-important">Zaimplementować</li>
     </ol>
+	<button type="button" onclick="removeBoringStuff()">Usuń nudne rzeczy</button>
+	<div>
+	<input type="text" id="myTextField">
+	<input type="checkbox" id="myCheckbox">
+	<button type="button" onclick="readValues()">Odczytaj wartości</button>
+	</div>
 </div>
 <script>
-//alert('Witamy witamy');
-	// szukanie po identyfikatorze
-const header = document.getElementById('main-header');
-alert(header.innerText);
-const nudy = document.querySelectorAll("#app .boring");
-nudy.forEach(element => {
-    alert(`Nuda: ${element.innerText}`);
-    element.classList.remove('boring');
-});
+    //alert('Witamy witamy');
+	//const header = document.getElementById('main-header');
+	//alert(header.innerText);
+	
+	// szukanie po selektorach (tak jak w CSS)
+	//const nudy = document.querySelectorAll("#app .boring");
+	/*nudy.forEach(element => {
+		alert(`Nuda: ${element.innerText}`);
+		element.classList.remove('boring');
+	});*/
+	
+	//let div = document.createElement('div');
+	//div.classList.add('green');
+	//div.innerText = 'Zielony tekst (jeśli dodasz CSS)';
+	//document.getElementById('app').append(div); // jest też prepend
+	
+	//let listItem = document.createElement('li');
+	//listItem.innerText = 'Zagrać';
+	// dodaję na koniec listy
+	//document.querySelector("#app ol li:last-child").after(listItem); // jest też before
+	
+	//document.querySelectorAll("#app .boring").forEach((e) => e.remove())
+	
+	//div.classList.remove("green");
+	//div.classList.add("green");
 
-//let div = document.createElement('div');
-//div.classList.add('green');
-//div.innerText = 'Zielony tekst (jeśli dodasz CSS)';
-//document.getElementById('app').append(div); // jest też prepend
+	// jeśli ustawiona jest widoczność usuwa ją, w przeciwnym wypadku dodaje
+	//div.classList.toggle("visible");
 
-let listItem = document.createElement('li');
-listItem.innerText = 'Zagrać';
-// dodaję na koniec listy
-document.querySelector("#app ol li:last-child").after(listItem); // jest też before
+	// dodaj/usuń (add/remove) jest widoczne, w zależności od warunku testowego, i mniejsze od 10
+	//div.classList.toggle("visible", i < 10 );
 
-//document.querySelectorAll('#app .boring').forEach((e) => e.remove());
-
-const div = document.querySelector('div');
-alert(div.classList.contains('foo'));
-
-
+	//alert(div.classList.contains("foo"));
+	
+	function removeBoringStuff(){
+		document.querySelectorAll("#app .boring").forEach((e) => e.remove())
+	}
+	
+	function readValues(){
+		const message = document.getElementById('myTextField');
+		const checkbox = document.getElementById('myCheckbox');
+		if (checkbox.checked){
+			alert(message.value);
+		}
+	}
 
 </script>
 </body>
